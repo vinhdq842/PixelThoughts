@@ -2,9 +2,12 @@ package com.quangvinh.pixelthoughts;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -79,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
 
         linearLayoutInputForm.setAlpha(0);
         linearLayoutInputForm.getChildAt(0).setEnabled(false);
+        ((TextView) linearLayoutAppLabel.getChildAt(0)).setTypeface(Background.typeface);
+        ((TextView) linearLayoutAppLabel.getChildAt(1)).setTypeface(Background.typeface);
 
         textViewMessage.setAlpha(0);
         Background.setMainStarAlpha(0);
@@ -197,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
 
 class Background extends View {
 
-    private Paint paint = new Paint();
+    private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
     private String message = "";
 
@@ -214,12 +219,16 @@ class Background extends View {
 
     static Typeface typeface;
 
+    private Bitmap background;
+
+    private Rect rect;
+
     public Background(Context context) {
         super(context);
-        typeface = Typeface.createFromAsset(context.getAssets(), "fonts/tnr.ttf");
+        typeface = Typeface.createFromAsset(context.getAssets(), "fonts/ComingSoon.ttf");
         paint.setTypeface(typeface);
-        paint.setFlags(Paint.ANTI_ALIAS_FLAG);
-
+        background = BitmapFactory.decodeResource(getResources(), R.drawable.background);
+        rect = new Rect(0, 0, MainActivity.WIDTH, MainActivity.HEIGHT);
     }
 
     public static void setMainStarAlpha(float alp) {
@@ -247,11 +256,12 @@ class Background extends View {
     @Override
     protected void onDraw(android.graphics.Canvas canvas) {
         super.onDraw(canvas);
-        if (radius > 5)
-            drawTheMainStar(MainActivity.WIDTH / 2f, MainActivity.HEIGHT / 2f, radius, canvas, paint);
+        canvas.drawBitmap(background, null, rect, paint);
         paint.setColor(Color.WHITE);
         addStars();
         for (int i = 0; i < stars.size(); i++) (stars.elementAt(i)).render(canvas, paint);
+        if (radius > 5)
+            drawTheMainStar(MainActivity.WIDTH / 2f, MainActivity.HEIGHT / 2f, radius, canvas, paint);
         invalidate();
     }
 
