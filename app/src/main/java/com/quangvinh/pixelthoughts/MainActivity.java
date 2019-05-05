@@ -12,6 +12,7 @@ import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     static final int WIDTH = Resources.getSystem().getDisplayMetrics().widthPixels;
     static final int HEIGHT = Resources.getSystem().getDisplayMetrics().heightPixels;
 
-    static final String[] messages = {"Put a stressful thought in the star", "Relax and watch you thought", "Take a deep breath in....", "....and breathe out", "Everything is okay", "Your life is okay", "Life is much grander than this thought", "The universe is over 93 billion light-years in distance", "Our galaxy is small", "Our sun is tiny", "The earth is minuscule", "Our cities are insignificant....", "....and you are microscopic", "This thought.... does not matter", "It can easily disappear", "and life will go on...."};
+    static final String[] messages = {"Put a stressful thought in the star", "Relax and watch your thought", "Take a deep breath in....", "....and breathe out", "Everything is okay", "Your life is okay", "Life is much grander than this thought", "The universe is over 93 billion light-years in distance", "Our galaxy is small", "Our sun is tiny", "The earth is minuscule", "Our cities are insignificant....", "....and you are microscopic", "This thought.... does not matter", "It can easily disappear", "and life will go on...."};
 
     private int count = 0;
     static int index = 1;
@@ -116,17 +117,23 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         mediaPlayer.start();
                         background.setMessage(((TextView) findViewById(R.id.inputText)).getText().toString());
-                        relativeLayoutMainScreen.removeView(linearLayoutInputForm);
                         Background.startAnimation();
+                        linearLayoutInputForm.setEnabled(false);
 
                         alpha = 1.0f;
                         a = -0.2f;
-                        count = 25;
+                        count = 6;
 
                         countDownTimerRunning = new CountDownTimer(100000, 100) {
                             @Override
                             public void onTick(long millisUntilFinished) {
                                 count++;
+                                if (linearLayoutInputForm.getAlpha() >= 0.2) {
+                                    linearLayoutInputForm.setAlpha(1.0f - (count - 6) * 0.2f);
+                                    if (linearLayoutInputForm.getAlpha() < 0.2)
+                                        relativeLayoutMainScreen.removeView(linearLayoutInputForm);
+                                }
+
                                 if (index < messages.length && count == 30) {
                                     a *= -1;
                                     alpha = 0;
@@ -203,6 +210,7 @@ public class MainActivity extends AppCompatActivity {
 class Background extends View {
 
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private Paint paint2 = new Paint(Paint.ANTI_ALIAS_FLAG);
 
     private String message = "";
 
@@ -212,7 +220,8 @@ class Background extends View {
     static final int NUM_STARS = 130;
 
     private static float radius = MainActivity.HEIGHT / 6f;
-    static float down = radius / 93f;
+    static float downUnit = radius / 96.5f;
+
     static Timer timer = new Timer();
 
     static int alpha = 255;
@@ -222,6 +231,15 @@ class Background extends View {
     private Bitmap background;
 
     private Rect rect;
+    private Handler handler = new Handler();
+
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            invalidate();
+        }
+    };
+
 
     public Background(Context context) {
         super(context);
@@ -229,6 +247,9 @@ class Background extends View {
         paint.setTypeface(typeface);
         background = BitmapFactory.decodeResource(getResources(), R.drawable.background);
         rect = new Rect(0, 0, MainActivity.WIDTH, MainActivity.HEIGHT);
+        paint2.setShadowLayer(30, 0, 0, 0xffff6347);
+        setLayerType(1, paint2);
+        paint2.setTypeface(typeface);
     }
 
     public static void setMainStarAlpha(float alp) {
@@ -239,9 +260,9 @@ class Background extends View {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                if (radius > 6) radius -= down;
+                if (radius > 6) radius -= downUnit;
                 else {
-                    stars.addElement(new Star(MainActivity.WIDTH / 2f, MainActivity.HEIGHT / 2f, radius));
+                    stars.addElement(new Star(MainActivity.WIDTH / 2f, MainActivity.HEIGHT / 2f, radius, 5));
                     radius--;
                     this.cancel();
                 }
@@ -261,22 +282,23 @@ class Background extends View {
         addStars();
         for (int i = 0; i < stars.size(); i++) (stars.elementAt(i)).render(canvas, paint);
         if (radius > 5)
-            drawTheMainStar(MainActivity.WIDTH / 2f, MainActivity.HEIGHT / 2f, radius, canvas, paint);
-        invalidate();
+            drawTheMainStar(MainActivity.WIDTH / 2f, MainActivity.HEIGHT / 2f, radius, canvas, paint2);
+        handler.postDelayed(runnable, 30);
     }
 
     private void drawTheMainStar(float x, float y, float r, Canvas canvas, Paint paint) {
-        paint.setARGB(alpha, 100, 50, 0);
-        canvas.drawArc(x - r, y - r, x + r, y + r, 0, 360, true, paint);
 
         paint.setARGB(alpha, 221, 221, 221);
+        canvas.drawArc(x - r, y - r, x + r, y + r, 0, 360, true, paint);
+
+       /* paint.setARGB(alpha, 221, 221, 221);
         canvas.drawArc(x - r + r / 10, y - r + r / 10, x + r - r / 10, y + r - r / 10, 0, 360, true, paint);
 
         paint.setARGB(alpha, 204, 204, 204);
         canvas.drawArc(x - r + r / 5, y - r + r / 5, x + r - r / 5, y + r - r / 5, 0, 360, true, paint);
 
         paint.setARGB(alpha, 221, 221, 221);
-        canvas.drawArc(x - r + r / 2, y - r + r / 4, x + r - r / 5, y + r - r / 4, 0, 360, true, paint);
+        canvas.drawArc(x - r + r / 2, y - r + r / 4, x + r - r / 5, y + r - r / 4, 0, 360, true, paint);*/
 
         paint.setColor(Color.BLACK);
         paint.setTextAlign(Paint.Align.CENTER);
@@ -299,12 +321,15 @@ class Background extends View {
         private float x, v, y, size;
 
         Star(float x, float y, float size) {
-            this.x = x;
-            this.y = y;
-            this.v = size / 2;
-            this.size = size;
+            this(x, y, size, size / 2);
         }
 
+        Star(float x, float y, float size, float v) {
+            this.x = x;
+            this.y = y;
+            this.v = v;
+            this.size = size;
+        }
 
         private void move() {
             y -= v;
