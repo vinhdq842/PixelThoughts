@@ -111,6 +111,8 @@ public class MainActivity extends AppCompatActivity {
                 ((TextView) linearLayoutAppLabel.getChildAt(0)).setTextSize(25);
                 ((TextView) linearLayoutAppLabel.getChildAt(1)).setText(R.string.my_word);
                 Background.setMainStarAlpha(255);
+                linearLayoutInputForm.setAlpha(1);
+                textViewMessage.setAlpha(1);
 
                 findViewById(R.id.enter).setOnClickListener(new View.OnClickListener() {
                     @Override
