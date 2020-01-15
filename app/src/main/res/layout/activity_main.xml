@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="#000000">
 
-
     <LinearLayout
         android:id="@+id/inputForm"
         android:layout_width="wrap_content"
