@@ -1,44 +1,63 @@
 # PixelThoughts
 
-A simple Android application designed to help users manage stressful thoughts by visualizing them as fleeting stars.
+PixelThoughts is an Android application designed to help users manage stress by visualizing their thoughts as stars, allowing them to release and let go of negative feelings.
 
 ## About
 
-PixelThoughts is an application that guides users through a calming process. Users are prompted to put a stressful thought into a star, then relax and watch as the thought (represented by the star) moves away and fades into the vastness of space. The application uses soothing visuals, subtle animations, and calming messages to promote relaxation and perspective.
+PixelThoughts guides users through a relaxing process to manage their stressful thoughts. When a user is feeling overwhelmed, they can input a thought into the app, which is then visualized as a star. The star moves away, symbolizing the thought fading into the vastness of space. Through soothing visuals, calming animations, and encouraging messages, the app promotes relaxation and helps users gain perspective on their stress.
 
 ## Features
 
-*   Interactive visualization of thoughts as stars.
-*   Calming background animation with moving stars.
-*   Progressive display of comforting messages.
-*   Background music for a relaxing atmosphere.
-*   Full-screen immersive experience.
+- **Interactive Thought Visualization**: Convert your stressful thoughts into stars and watch them fade away.
+- **Soothing Animations**: A calming background with moving stars and soft transitions.
+- **Comforting Messages**: Gradually displayed reassuring messages to help users relax.
+- **Relaxing Background Music**: Soft background music enhances the atmosphere of tranquility.
+- **Immersive Full-Screen Mode**: An immersive, distraction-free experience for maximum relaxation.
 
 ## Technologies Used
 
-*   Android SDK
-*   Java (for the initial codebase)
-*   Custom View drawing for background and stars
-*   Android `CountDownTimer` for managing transitions
-*   Android `MediaPlayer` for background audio
+PixelThoughts was built using the following technologies:
+
+- **Android SDK** for app development.
+- **Java** for the initial codebase.
+- **Custom Views** for background and star animations.
+- **Android `CountDownTimer`** for smooth transitions between states.
+- **Android `MediaPlayer`** for playing calming background music.
 
 ## Getting Started
 
 ### Prerequisites
 
-*   Android Studio installed.
-*   An Android device or emulator to run the application.
+To get started with PixelThoughts, you will need:
+
+- Android Studio installed on your machine.
+- An Android device or emulator to run the app.
 
 ### Installation
 
-1.  Clone the repository
-2.  Open the project in Android Studio.
-3.  Build and run the project on your connected Android device or emulator.
+Follow these steps to set up the project locally:
+
+1. Clone the repository to your local machine.
+   ```bash
+   git clone https://github.com/vinhdq842/PixelThoughts.git
+   ```
+
+2. Open the project in **Android Studio**.
+3. Build and run the project on your connected Android device or emulator.
 
 ## Contributing
 
-If you'd like to contribute to PixelThoughts, please fork the repository and create a pull request with your changes.
+We welcome contributions to improve PixelThoughts! To contribute:
+
+1. Fork the repository.
+2. Create a branch with a descriptive name for your changes.
+3. Make your modifications and test the changes locally.
+4. Create a pull request describing the changes you made.
+
+## Acknowledgments
+
+PixelThoughts was inspired by the original version found at [pixelthoughts.co](https://www.pixelthoughts.co/). Special thanks to the creators for the concept and design.
 
 ---
 
-**Created with ❤️ by [VinhDQ842]**
+**Created with ❤️ by [SOE](https://github.com/vinhdq842)**
