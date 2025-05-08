@@ -2,6 +2,10 @@
 
 PixelThoughts is an Android application designed to help users manage stress by visualizing their thoughts as stars, allowing them to release and let go of negative feelings.
 
+<p align="center">
+  <img src="screenshots/demo.png" alt="demo" width="352" height="670"/>
+</p>
+
 ## About
 
 PixelThoughts guides users through a relaxing process to manage their stressful thoughts. When a user is feeling overwhelmed, they can input a thought into the app, which is then visualized as a star. The star moves away, symbolizing the thought fading into the vastness of space. Through soothing visuals, calming animations, and encouraging messages, the app promotes relaxation and helps users gain perspective on their stress.
