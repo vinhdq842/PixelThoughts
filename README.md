@@ -1,6 +1,6 @@
 # PixelThoughts
 
-PixelThoughts is an Android application designed to help users manage stress by visualizing their thoughts as stars, allowing them to release and let go of negative feelings.
+PixelThoughts is a calming Android application designed to help users manage stress by transforming their overwhelming thoughts into a star. With soothing visuals and peaceful animations, it allows users to release their negative feelings and gain a fresh perspective.
 
 <p align="center">
   <img src="screenshots/demo.png" alt="demo" width="352" height="670"/>
@@ -8,15 +8,15 @@ PixelThoughts is an Android application designed to help users manage stress by 
 
 ## About
 
-PixelThoughts guides users through a relaxing process to manage their stressful thoughts. When a user is feeling overwhelmed, they can input a thought into the app, which is then visualized as a star. The star moves away, symbolizing the thought fading into the vastness of space. Through soothing visuals, calming animations, and encouraging messages, the app promotes relaxation and helps users gain perspective on their stress.
+PixelThoughts provides a simple yet effective way to relieve stress. When users feel overwhelmed, they can enter their thoughts into the app, which is visualized as a star. This star gradually fades into the vastness of space, symbolizing the release of negative thoughts. Accompanied by calming visuals, animations, and reassuring messages, PixelThoughts helps users relax and focus on the present moment.
 
-## Features
+## Key Features
 
-- **Interactive Thought Visualization**: Convert your stressful thoughts into stars and watch them fade away.
-- **Soothing Animations**: A calming background with moving stars and soft transitions.
-- **Comforting Messages**: Gradually displayed reassuring messages to help users relax.
-- **Relaxing Background Music**: Soft background music enhances the atmosphere of tranquility.
-- **Immersive Full-Screen Mode**: An immersive, distraction-free experience for maximum relaxation.
+- **Thought Visualization**: Turn your stressful thoughts into a moving star that gently fades away into space.
+- **Calming Animations**: A serene, dynamic background with floating stars and smooth transitions to promote relaxation.
+- **Reassuring Messages**: Encouraging messages are displayed to guide you through the process of letting go.
+- **Relaxing Soundtrack**: Soft background music to deepen the sense of tranquility.
+- **Full-Screen Mode**: A distraction-free immersive experience to help you fully relax and unwind.
 
 ## Technologies Used
 
@@ -51,16 +51,16 @@ Follow these steps to set up the project locally:
 
 ## Contributing
 
-We welcome contributions to improve PixelThoughts! To contribute:
+If you'd like to contribute to PixelThoughts, feel free to follow these steps:
 
 1. Fork the repository.
-2. Create a branch with a descriptive name for your changes.
-3. Make your modifications and test the changes locally.
-4. Create a pull request describing the changes you made.
+2. Create a branch for your feature or bugfix.
+3. Make your changes and test them locally.
+4. Open a pull request and describe your changes.
 
 ## Acknowledgments
 
-PixelThoughts was inspired by the original version found at [pixelthoughts.co](https://www.pixelthoughts.co/). Special thanks to the creators for the concept and design.
+PixelThoughts was inspired by the original version found at [pixelthoughts.co](https://www.pixelthoughts.co/). Special thanks to Marc Balaban for the concept and design.
 
 ---
 
